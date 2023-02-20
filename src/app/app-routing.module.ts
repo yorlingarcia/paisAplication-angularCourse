@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 import { PorCapitalComponent } from './pais/pages/por-capital/por-capital.component';
 import { PorPaisComponent } from './pais/pages/por-pais/por-pais.component';
@@ -33,7 +33,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [],
-  exports: [],
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}
