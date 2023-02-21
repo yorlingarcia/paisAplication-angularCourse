@@ -18,7 +18,7 @@ export class PaisInputComponent implements OnInit {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
     this.debouncer.subscribe((valor) => {
-      console.log(this.debouncer);
+      console.log('debouncer: ', valor);
     });
   }
 
@@ -26,9 +26,7 @@ export class PaisInputComponent implements OnInit {
     this.onEnter.emit(this.termino);
   }
 
-  teclaPresionada(event: any) {
-    const valor = event.target.value;
-    console.log(valor);
-    console.log(this.termino);
+  teclaPresionada() {
+    this.debouncer.next(this.termino);
   }
 }
