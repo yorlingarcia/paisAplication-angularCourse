@@ -1,1 +1,22 @@
-<p>por-region works!</p>
+<h2>Por region</h2>
+<hr />
+
+<div class="row">
+  <div class="col">
+    <app-pais-input
+      (onEnter)="buscar($event)"
+      (onDebounce)="sugerencias($event)"
+    ></app-pais-input>
+  </div>
+</div>
+
+<hr />
+<div class="alert alert-danger" *ngIf="hayError">
+  No se encontro nada con el termino {{ termino }}
+</div>
+
+<div *ngIf="regiones.length > 0" class="row">
+  <div class="col">
+    <app-pais-table [paises]="regiones"></app-pais-table>
+  </div>
+</div>
