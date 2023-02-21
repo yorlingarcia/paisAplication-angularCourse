@@ -13,6 +13,7 @@ export class PorPaisComponent {
   paises: Country[] = [];
 
   constructor(private paisService: PaisService) {}
+
   buscar(termino: string) {
     this.hayError = false;
     this.termino = termino;
