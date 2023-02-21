@@ -10,7 +10,7 @@ import { Country } from '../../interfaces/pais.interface';
   styles: [],
 })
 export class VerPaisComponent implements OnInit {
-  pais: Country[] = []; // obligar a que pueda ser nulo con !
+  pais!: Country; // obligar a que pueda ser nulo con !
 
   constructor(
     private activateRoute: ActivatedRoute,
@@ -27,7 +27,7 @@ export class VerPaisComponent implements OnInit {
       .subscribe((pais) => {
         console.log('ver-pais');
         console.log('visto: ', pais);
-        this.pais = pais;
+        this.pais = pais[0];
         console.log('Asignado');
         console.log(this.pais);
 
