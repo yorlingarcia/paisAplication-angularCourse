@@ -7,10 +7,14 @@
 
 <div class="row">
   <div class="col">
+    <!-- [class.btn-primary]="reg === regionActiva" -->
     <button
       *ngFor="let reg of region"
       class="btn btn-outline-primary mr-1"
-      [class.abc]="true"
+      [ngClass]="{
+        'btn-primary': regionActiva === reg,
+        'btn-outline-primary': regionActiva !== reg
+      }"
       (click)="activateRegion(reg)"
     >
       {{ reg }}
