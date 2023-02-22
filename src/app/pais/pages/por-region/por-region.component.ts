@@ -8,13 +8,15 @@ import { PaisService } from '../../services/pais.service';
   styles: [],
 })
 export class PorRegionComponent {
-  termino: string = '';
   hayError: boolean = false;
   regiones: Country[] = [];
 
   region: string[] = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
   regionActiva: string = '';
-  constructor() {}
+
+  paises: Country[] = [];
+
+  constructor(private paisService: PaisService) {}
 
   getClassCss(reg: string): string {
     return reg === this.regionActiva
@@ -23,28 +25,19 @@ export class PorRegionComponent {
   }
 
   activateRegion(region: string) {
+    if (region === this.regionActiva) {
+      return;
+    }
     this.regionActiva = region;
+    //this.paises = [];
+    this.paisService.buscarRegion(region).subscribe(
+      (regionesBusqueda) => {
+        //console.log(regionesBusqueda);
+        this.paises = regionesBusqueda;
+      },
+      (err) => {
+        this.paises = [];
+      }
+    );
   }
-
-  // constructor(private paisService: PaisService) {}
-
-  // buscar(termino: string) {
-  //   this.hayError = false;
-  //   this.termino = termino;
-
-  //   this.paisService.buscarRegion(this.termino).subscribe(
-  //     (regionesBusqueda) => {
-  //       console.log(regionesBusqueda);
-  //       this.regiones = regionesBusqueda;
-  //     },
-  //     (err) => {
-  //       this.hayError = true;
-  //       this.regiones = [];
-  //     }
-  //   );
-  // }
-
-  // sugerencias(termino: string) {
-  //   this.hayError = false;
-  // }
 }

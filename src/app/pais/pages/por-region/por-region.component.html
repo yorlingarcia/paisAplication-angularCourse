@@ -21,10 +21,17 @@
       [class]="getClassCss(reg)"
       (click)="activateRegion(reg)"
     >
-      {{ reg }}
+      {{ reg | titlecase }}
     </button>
   </div>
 </div>
+
+<div *ngIf="paises.length > 0" class="row">
+  <div class="col">
+    <app-pais-table [paises]="paises"></app-pais-table>
+  </div>
+</div>
+
 <!--
 <div class="row">
   <div class="col">
