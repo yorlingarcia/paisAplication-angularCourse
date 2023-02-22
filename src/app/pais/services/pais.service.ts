@@ -21,21 +21,19 @@ export class PaisService {
 
   buscarPais(termino: string): Observable<Country[]> {
     const url: string = `${this.apiUrl}/name/${termino}`;
-    return this.http.get<Country[]>(url);
+    return this.http.get<Country[]>(url, { params: this.httpParams });
   }
 
   buscarRegion(termino: string): Observable<Country[]> {
-    const params = new HttpParams().set(
-      'fields',
-      'capital,name,population,capital,flags'
-    );
     const url: string = `${this.apiUrl}/region/${termino}`;
-    return this.http.get<Country[]>(url, { params }).pipe(tap(console.log));
+    return this.http
+      .get<Country[]>(url, { params: this.httpParams })
+      .pipe(tap(console.log));
   }
 
   buscarCapital(termino: string): Observable<Country[]> {
     const url: string = `${this.apiUrl}/capital/${termino}`;
-    return this.http.get<Country[]>(url);
+    return this.http.get<Country[]>(url, { params: this.httpParams });
   }
 
   getPaisPorAlpha(id: string): Observable<Country[]> {
