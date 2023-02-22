@@ -13,11 +13,12 @@
         'btn-outline-primary': regionActiva !== reg
       }" -->
     <!-- class="btn btn-outline-primary mr-1" -->
+    <!-- [class]="
+        reg === regionActiva ? 'btn btn-primary' : 'btn btn-outline-primary'
+      " -->
     <button
       *ngFor="let reg of region"
-      [class]="
-        reg === regionActiva ? 'btn btn-primary' : 'btn btn-outline-primary'
-      "
+      [class]="getClassCss(reg)"
       (click)="activateRegion(reg)"
     >
       {{ reg }}

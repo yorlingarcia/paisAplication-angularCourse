@@ -16,6 +16,12 @@ export class PorRegionComponent {
   regionActiva: string = '';
   constructor() {}
 
+  getClassCss(reg: string): string {
+    return reg === this.regionActiva
+      ? 'btn btn-primary'
+      : 'btn btn-outline-primary';
+  }
+
   activateRegion(region: string) {
     this.regionActiva = region;
   }
